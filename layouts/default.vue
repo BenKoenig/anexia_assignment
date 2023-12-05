@@ -10,6 +10,8 @@
 
 <template>
   <div class="default-min-height">
+    <!-- skip to content button for screen readers -->
+    <a href="#main-content"><span class="sr-only">Skip to Content</span></a>
     <!-- nav // no seperate component to reduce redundancy -->
     <nav
       class="fixed h-20 top-0 left-0 w-full flex items-center pl-4 mb-10 backdrop-blur-lg"
@@ -20,7 +22,7 @@
     </nav>
     <!-- wraps around all components -->
     <div class="flex justify-center px-4">
-      <div class="w-full max-w-4xl">
+      <div id="main-content" class="w-full max-w-4xl">
         <!-- child components go here -->
         <slot />
       </div>
