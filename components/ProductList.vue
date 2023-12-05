@@ -12,7 +12,7 @@ const formatPrice = (price: number) => new Intl.NumberFormat().format(price);
         :key="index"
         class="flex flex-col md:flex-row gap-x-5 py-8 border-b border-white/50 last:border-b-transparent"
       >
-        <img
+        <NuxtImg
           :src="product.img"
           alt="product.name"
           class="aspect-square w-32 object-cover rounded-2xl h-fit outline outline-primary outline-offset-4 outline-1 mt-2 ml-0.5"
@@ -27,6 +27,11 @@ const formatPrice = (price: number) => new Intl.NumberFormat().format(price);
           <p class="bg-dark-primary text-lg mt-2 w-fit rounded-xl px-6 py-5">
             {{ product.desc }}
           </p>
+          <NuxtLink
+            class="inline-block mt-2 bg-white text-black font-black uppercase px-7 py-3 rounded-full mt-4 hover:bg-primary transition-colors"
+            to="/"
+            >View Product</NuxtLink
+          >
         </div>
       </div>
     </div>

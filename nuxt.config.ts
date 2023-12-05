@@ -20,5 +20,5 @@ export default defineNuxtConfig({
     '/old-page': { redirect: '/new-page' }
   },
 
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', "@nuxt/image"],
 })
