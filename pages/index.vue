@@ -1,4 +1,15 @@
 <script setup lang="ts">
+/*
+ * index.vue
+ *
+ * This component fetches all products from the API and displays a paginated list of products.
+ * The currentPage ref is used to keep track of the current page for pagination.
+ * The itemsPerPage constant defines the number of items per page.
+ * The allProducts ref stores the data fetched from the API.
+ * The products computed property returns the products for the current page.
+ * It calculates the start and end indices for the slice operation based on the current page and the number of items per page.
+ */
+
 import { ref, computed } from "vue";
 
 /* for pagination */
