@@ -5,24 +5,6 @@ Features include -
 * setting items per page and navigating between pages. 
 * It emits events on page changes for reactive updates. 
 -->
-
-<template>
-  <div class="flex justify-center gap-x-3 mb-5">
-    <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
-    <button
-      v-for="page in pagesToShow"
-      :key="page"
-      @click="setCurrentPage(page)"
-      :class="{ 'text-secondary': currentPage === page }"
-    >
-      {{ page }}
-    </button>
-    <button @click="nextPage" :disabled="currentPage === totalPages">
-      Next
-    </button>
-  </div>
-</template>
-
 <script setup lang="ts">
 /* Importing necessary functions from Vue */
 import { ref, computed, defineProps, defineEmits } from "vue";
@@ -66,7 +48,7 @@ const pagesToShow = computed(() => {
 const emit = defineEmits(["update:page"]);
 
 /* Function to set the current page and emit an update event */
-const setCurrentPage = (page) => {
+const setCurrentPage = (page: number) => {
   currentPage.value = page;
   emit("update:page", page);
 };
@@ -87,3 +69,20 @@ const prevPage = () => {
   }
 };
 </script>
+
+<template>
+  <div class="flex justify-center gap-x-3 mb-5">
+    <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
+    <button
+      v-for="page in pagesToShow"
+      :key="page"
+      @click="setCurrentPage(page)"
+      :class="{ 'text-secondary': currentPage === page }"
+    >
+      {{ page }}
+    </button>
+    <button @click="nextPage" :disabled="currentPage === totalPages">
+      Next
+    </button>
+  </div>
+</template>

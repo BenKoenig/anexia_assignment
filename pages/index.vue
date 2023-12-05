@@ -2,7 +2,7 @@
 import { ref, computed } from "vue";
 
 /* for pagination */
-const currentPage = ref(2);
+const currentPage = ref(1);
 const itemsPerPage = 4;
 
 /* api fetch */
@@ -36,6 +36,6 @@ const products = computed(() => {
   <Pagination
     v-model:page="currentPage"
     :items-per-page="itemsPerPage"
-    :total-items="allProducts.length"
+    :total-items="allProducts ? allProducts.length : 0"
   />
 </template>

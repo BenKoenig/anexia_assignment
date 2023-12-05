@@ -4,5 +4,5 @@ export default defineEventHandler((event) => {
   const slug = getRouterParam(event, "slug");
   const product = products.find(product => product.slug === slug);
 
-  return product ? product : `Product with slug ${slug} not found`;
-});
+  return product ? product : null;
+}); 
