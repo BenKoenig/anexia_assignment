@@ -12,14 +12,13 @@
  import { useProductStore } from '~/stores/product';
  import { useRoute } from 'vue-router';
  
- const route = useRoute();
  const productStore = useProductStore();
+ const route = useRoute();
  
  const productName = computed(() => productStore.productName);
- const isProductLoading = computed(() => productStore.isProductLoading); 
- 
+    
  onMounted(() => {
-   // Check for product name on page mount
+   // Optional: Check for product name on page mount
    if (!route.meta.hasProduct) {
      productStore.clearProductName();
    }
@@ -44,7 +43,7 @@
       <NuxtLink to="/" class="text-white text-4xl font-bold"
         >Online Shop</NuxtLink
       >
-      <p v-if="productName && !isProductLoading" class="mt-1">Product: {{ productName }}</p>
+      <p v-if="productName" class="mt-1">Product: {{ productName }}</p>
     </nav>
     <!-- wraps around all components -->
     <div class="flex justify-center px-4">
