@@ -1,4 +1,12 @@
-<!-- default layout for every page (if none other is selected) -->
+<!-- /*
+ * default.vue
+ *
+ * This is the default layout for every page in the application if no other layout is selected.
+ * It includes a fixed navigation bar at the top and a footer at the bottom.
+ * The navigation bar and footer are not separate components to reduce redundancy.
+ * The main content of the page is wrapped in a div for center alignment and padding.
+ * The child components are inserted into the layout using the <slot /> element.
+ */ -->
 
 <template>
   <div class="default-min-height">
@@ -30,10 +38,12 @@
 </template>
 
 <style>
+/* make page height minimum to screen height */
 .default-min-height {
   min-height: calc(100vh - 168px);
 }
 
+/* fonts */
 @font-face {
   font-family: "ClashDisplay";
   src: url("/assets/fonts/ClashDisplay-Variable.woff2") format("woff2"),
@@ -43,6 +53,7 @@
   font-weight: 100 900;
   font-style: normal;
 }
+
 body {
   @apply font-ClashDisplay text-white bg-dark-secondary mt-20;
 }

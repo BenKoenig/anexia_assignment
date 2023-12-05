@@ -1,10 +1,12 @@
-<!-- 
-This component handles pagination for products. 
-
-Features include -
-* setting items per page and navigating between pages. 
-* It emits events on page changes for reactive updates. 
--->
+<!-- /*
+ * Pagination.vue
+ *
+ * This component handles pagination for a list of items.
+ * It allows setting the number of items per page and navigating between pages.
+ * The component emits events when the page changes to allow for reactive updates.
+ * It uses Vue's composition API to define reactive properties and computed values.
+ */ -->
+ 
 <script setup lang="ts">
 /* Importing necessary functions from Vue */
 import { ref, computed, defineProps, defineEmits } from "vue";

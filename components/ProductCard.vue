@@ -1,4 +1,11 @@
-<!-- This component displays product image, name, price and description for individual products -->
+<!-- /*
+ * ProductCard.vue
+ *
+ * This component displays the image, name, price, and description of an individual product.
+ * It receives a product object as a prop and uses the formatPrice helper function to format the product price.
+ * The product image is displayed using the NuxtImg component for better image performance.
+ * The component also provides a slot for inserting additional content.
+ */ -->
 
 <script setup lang="ts">
 import { formatPrice } from "../helpers";
