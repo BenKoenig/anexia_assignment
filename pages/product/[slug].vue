@@ -8,24 +8,25 @@
  */ -->
 
 <script setup>
-// Import the useRoute hook from Nuxt.js
-const route = useRoute();
+import { useRoute } from "vue-router";
+import { useFetch, createError } from "nuxt/app";
+import { useProductStore } from "~/stores/product";
 
-// Fetch the product data from the API using the product slug from the route params
+const route = useRoute();
+const productStore = useProductStore();
+
 const { data: product } = await useFetch(`/api/products/${route.params.slug}`);
 
-/**
- * Throws error if product is not found.
- */
 if (!product.value) {
-  // If the product is not found, throw a 404 error
   throw createError({
     statusCode: 404,
     statusMessage: "Page Not Found",
   });
 }
 
-// Define the breadcrumbs for the current page
+// Update the product name in the store
+productStore.updateProductName(product.value.name);
+
 const breadcrumbs = [
   {
     text: "Products",

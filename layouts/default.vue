@@ -7,6 +7,31 @@
  * The main content of the page is wrapped in a div for center alignment and padding.
  * The child components are inserted into the layout using the <slot /> element.
  */ -->
+ <script setup>
+ import { computed, watch, onMounted } from '@vue/composition-api';
+ import { useProductStore } from '~/stores/product';
+ import { useRoute } from 'vue-router';
+ 
+ const route = useRoute();
+ const productStore = useProductStore();
+ 
+ const productName = computed(() => productStore.productName);
+ const isProductLoading = computed(() => productStore.isProductLoading); 
+ 
+ onMounted(() => {
+   // Check for product name on page mount
+   if (!route.meta.hasProduct) {
+     productStore.clearProductName();
+   }
+ });
+ 
+ watch(route, (currentRoute) => {
+   // Clear productName if the current page does not provide it
+   if (!currentRoute.meta.hasProduct) {
+     productStore.clearProductName();
+   }
+ });
+ </script>
 
 <template>
   <div class="default-min-height">
@@ -14,11 +39,12 @@
     <a href="#main-content"><span class="sr-only">Skip to Content</span></a>
     <!-- nav // no seperate component to reduce redundancy -->
     <nav
-      class="fixed h-20 top-0 left-0 w-full flex items-center pl-4 mb-10 backdrop-blur-lg"
+      class="fixed h-20 top-0 left-0 w-full flex justify-between gap-x-4 items-center px-4 mb-10 backdrop-blur-lg"
     >
       <NuxtLink to="/" class="text-white text-4xl font-bold"
         >Online Shop</NuxtLink
       >
+      <p v-if="productName && !isProductLoading" class="mt-1">Product: {{ productName }}</p>
     </nav>
     <!-- wraps around all components -->
     <div class="flex justify-center px-4">
